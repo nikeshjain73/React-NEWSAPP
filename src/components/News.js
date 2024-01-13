@@ -11,13 +11,11 @@ const News = (props) => {
    const [loading, setLoading ]= useState(true)
    const [page, setPage] = useState(1)
    const [totalResults, setTotalResults] = useState(0)
-        // document.title = `News Begin ${cap(this.props.category)}`;
 
     
     const updateNews = async() => {
        props.setProgress(20)
         const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=ef3d549d2f1f4ca8a8f9c4e2f6317ec6&page=${page}&pageSize=${props.pageSize}`;
-        // this.setState({loading: true})
         setLoading(true)
         let data = await fetch(url);
        props.setProgress(50)
@@ -27,22 +25,17 @@ const News = (props) => {
         setArticles(parseddata.articles);
         setTotalResults(parseddata.setTotalResults)
         setLoading(false)
-        // this.setState({
-        //     articles: parseddata.articles,
-        //     totalResults: parseddata.totalResults,
-        //     loading: false
-        // })
+        
        props.setProgress(100)
     }
     
     useEffect(() => {
+        document.title = `News Begin ${(props.category)}`;
         updateNews();
     }, [])
     
-    // async componentDidMount() {
-       
-    // }
-
+    
+   
     
 
     const fetchMoreData = async () => {
@@ -67,7 +60,6 @@ const News = (props) => {
         //either you can use this code
         const nxtpage = page + 1;
         const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=ef3d549d2f1f4ca8a8f9c4e2f6317ec6&page=${nxtpage}&pageSize=${props.pageSize}`;
-        // this.setState({loading: true})
         setLoading(true)
         let data = await fetch(url);
         let parseddata = await data.json();
@@ -76,12 +68,6 @@ const News = (props) => {
         setTotalResults(parseddata.totalResults)
         setLoading(false)
         setPage(nxtpage)
-        // this.setState({
-        //     articles: articles.concat(parseddata.articles),
-        //     totalResults: parseddata.totalResults,
-        //     loading: false,
-        //     page: page
-        // })
     };
    
     document.title =`News Begin ${(props.category)}`
