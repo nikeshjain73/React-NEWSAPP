@@ -10,7 +10,7 @@ import LoadingBar from 'react-top-loading-bar'
 
 
 const App = () => {
-  let pageSize = 15;
+  let pageSize = 9;
   const [progress, setProgress] = useState(0)
   
 

@@ -88,7 +88,7 @@ const News = (props) => {
 
         return (
             <>
-               <h1 className="text-center">News Begin Top <strong>{(props.category.charAt(0).toUpperCase() + props.category.slice(1))}</strong> Headlines</h1>
+               <h1 className="text-center" style={{marginTop: '60px', marginBottom: '40px'}}>News Begin Top <strong>{(props.category.charAt(0).toUpperCase() + props.category.slice(1))}</strong> Headlines</h1>
 
                 {loading && <Spinner/>}
                 <InfiniteScroll
@@ -97,7 +97,7 @@ const News = (props) => {
                     hasMore={articles.length !== totalResults}
                     loader={<Spinner/>}
                 >
-                    <div className="contanier">
+                    <div className="contanier" style={{overflow: 'hidden'}}>
                         <div className="row">
                             {articles.map((element, index) => {
                                 console.log(element)
